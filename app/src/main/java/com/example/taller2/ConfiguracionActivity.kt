@@ -5,8 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import androidx.core.content.ContextCompat
-import androidx.constraintlayout.widget.ConstraintLayout
 import android.widget.RelativeLayout
 
 class ConfiguracionActivity : AppCompatActivity() {
@@ -25,6 +23,7 @@ class ConfiguracionActivity : AppCompatActivity() {
         volverInicioBtn = findViewById(R.id.volverInicioBtn)
 
         sharedPreferences = getSharedPreferences("config", MODE_PRIVATE)
+
         cambiarColorBtn.setOnClickListener {
             val color = Color.rgb((0..255).random(), (0..255).random(), (0..255).random())
             layout.setBackgroundColor(color)
@@ -42,3 +41,4 @@ class ConfiguracionActivity : AppCompatActivity() {
         layout.setBackgroundColor(color)
     }
 }
+
