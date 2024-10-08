@@ -1,5 +1,6 @@
 package com.example.taller2
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,6 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-//
 
 class ActividadPrincipal : AppCompatActivity() {
 
@@ -17,16 +17,19 @@ class ActividadPrincipal : AppCompatActivity() {
     private lateinit var guardarNombreBtn: Button
     private lateinit var iniciarTareaBtn: Button
     private lateinit var progresoBar: ProgressBar
+    private lateinit var btnIrConfiguracion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.actividad_principal)
 
+        // Referenciar vistas
         nombreEditText = findViewById(R.id.nombreEditText)
         nombreTextView = findViewById(R.id.nombreTextView)
         guardarNombreBtn = findViewById(R.id.guardarNombreBtn)
         iniciarTareaBtn = findViewById(R.id.iniciarTareaBtn)
         progresoBar = findViewById(R.id.progresoBar)
+        btnIrConfiguracion = findViewById(R.id.btnIrConfiguracion)
 
         // Guardar nombre
         guardarNombreBtn.setOnClickListener {
@@ -38,13 +41,19 @@ class ActividadPrincipal : AppCompatActivity() {
             }
         }
 
-        // Iniciar tarea en segundo plano simulando una operación de red
+
         iniciarTareaBtn.setOnClickListener {
             TareaAsincrona().execute()
         }
+
+
+        btnIrConfiguracion.setOnClickListener {
+            val intent = Intent(this, ConfiguracionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    // Clase AsyncTask para simular la tarea en segundo plano
+
     inner class TareaAsincrona : AsyncTask<Void, Int, Void>() {
         override fun onPreExecute() {
             progresoBar.visibility = ProgressBar.VISIBLE
@@ -53,7 +62,7 @@ class ActividadPrincipal : AppCompatActivity() {
 
         override fun doInBackground(vararg params: Void?): Void? {
             for (i in 1..100) {
-                Thread.sleep(50) // Simula una tarea que tarda tiempo
+                Thread.sleep(50)
                 publishProgress(i)
             }
             return null

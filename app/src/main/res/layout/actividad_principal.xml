@@ -38,4 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnIrConfiguracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cambiar color de la pantalla"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"></Button>
+
 </LinearLayout>

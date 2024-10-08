@@ -1,4 +1,4 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/configLayout1"
     android:layout_width="match_parent"
@@ -20,5 +20,5 @@ android:text="Volver a Inicio"
 android:layout_marginTop="20dp"
 android:layout_below="@id/cambiarColorBtn"/>
 
-</LinearLayout>
+</RelativeLayout>
 

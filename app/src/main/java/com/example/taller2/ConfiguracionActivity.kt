@@ -5,28 +5,26 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import android.widget.LinearLayout
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat
 import androidx.constraintlayout.widget.ConstraintLayout
-
+import android.widget.RelativeLayout
 
 class ConfiguracionActivity : AppCompatActivity() {
 
     private lateinit var cambiarColorBtn: Button
     private lateinit var volverInicioBtn: Button
-    private lateinit var layout: LinearLayout
+    private lateinit var layout: RelativeLayout
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_configuracion)
 
+        layout = findViewById(R.id.configLayout1)
         cambiarColorBtn = findViewById(R.id.cambiarColorBtn)
         volverInicioBtn = findViewById(R.id.volverInicioBtn)
 
         sharedPreferences = getSharedPreferences("config", MODE_PRIVATE)
-
         cambiarColorBtn.setOnClickListener {
             val color = Color.rgb((0..255).random(), (0..255).random(), (0..255).random())
             layout.setBackgroundColor(color)
@@ -34,7 +32,7 @@ class ConfiguracionActivity : AppCompatActivity() {
         }
 
         volverInicioBtn.setOnClickListener {
-            finish() // Cierra esta actividad y vuelve a la anterior
+            finish()
         }
     }
 
